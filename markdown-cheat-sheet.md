@@ -1,17 +1,58 @@
-# Markdown Cheat Sheet
+# Python decorators
 
-Thanks for visiting [The Markdown Guide](https://www.markdownguide.org)!
+##### **Definition :**
 
-This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for [basic syntax](https://www.markdownguide.org/basic-syntax) and [extended syntax](https://www.markdownguide.org/extended-syntax).
+The main role of [decorators]([Les décorateurs python](https://python.doctor/page-decorateurs-decorator-python-cours-debutants) is to modify the behavior of four functions. They are useful when wanting to add the same code to several existing functions.
 
-## Basic Syntax
 
-These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.
 
-### Heading
+##### Rating
 
-# H1
+```python
+@decorator 
+def function():
+    pass
+```
+
+**Use case :**
+
+Decorators apply to methods or functions to validate arguments, a way of saying that we explicitly modify the behavior of a function
+
+Exemple de cas d'utilisation
+
+soit deux fonctions ci-dessous
+
+```python
+Première fonction
+def hello():
+    print("hello world !")
+    
+hello()
+
+Hello world !
+```
+
+```python
+Definition du décorateur
+language = True
+def decorator(func):
+    if language:
+        print("Bonjour le monde !")
+    return func
+```
+
+```python
+@decorator
+def hello():
+    print("hello world !")
+    
+Bonjour le monde 
+```
+
+L'utilisation du décorateur sur les deu
+
 ## H2
+
 ### H3
 
 ### Bold
@@ -60,10 +101,10 @@ These elements extend the basic syntax by adding additional features. Not all Ma
 
 ### Table
 
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
 
 ### Fenced Code Block
 
