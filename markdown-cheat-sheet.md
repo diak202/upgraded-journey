@@ -4,8 +4,6 @@
 
 The main role of [decorators]([Les décorateurs python](https://python.doctor/page-decorateurs-decorator-python-cours-debutants) is to modify the behavior of four functions. They are useful when wanting to add the same code to several existing functions.
 
-
-
 ##### Rating
 
 ```python
@@ -26,7 +24,7 @@ soit deux fonctions ci-dessous
 Première fonction
 def hello():
     print("hello world !")
-    
+
 hello()
 
 Hello world !
@@ -45,7 +43,7 @@ def decorator(func):
 @decorator
 def hello():
     print("hello world !")
-    
+
 Bonjour le monde 
 ```
 
