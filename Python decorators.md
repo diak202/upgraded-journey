@@ -4,27 +4,29 @@
 
 The main role of [decorators]([Les décorateurs python](https://python.doctor/page-decorateurs-decorator-python-cours-debutants) is to modify the behavior of functions. They are useful when wanting to add the same code to several existing functions.
 
-Les décorateurs ne sont ni plus ni moins que des fonctions permettant de modifier le comportement d'autres fonctions et/ou d'exécuter du code supplémentaire.
+Decorators are nothing more or less than functions to modify the behavior of other functions and/or to execute additional code.
 
-Ainsi, plutôt que de copier/coller bêtement du code afin de légèrement modifier le comportement d'une fonction, Python vous propose d'éviter la répétition de code, réduisant ainsi les problèmes de maintenance du code via la possibilité de créer des fonctions d'ordre supérieur.
+Thus, rather than stupidly copying and pasting code in order to slightly modify the behavior of a function, Python offers you to avoid code repetition, thus reducing code maintenance problems via the possibility of creating functions from higher order.
 
 <img width=400 src = "./img/Decorators3.png"/>
 
-Les décorateurs sont considérés, en Python, comme une notion assez évoluée. La possibilité de passer en paramètre, à une fonction, une autre fonction, ne semble en effet pas forcément automatique ou naturelle en programmation procédurale ou objet.
+Decorators are considered, in Python, as a fairly advanced concept. The ability to pass as a parameter, to a function, to another function, does not necessarily seem automatic or natural in procedural or object programming.
 
-Cependant, c'est ce que les décorateurs vont nous permettre de faire : via une fonction, manipuler d'autres fonctions (aussi bien en entrée qu'en sortie) et éventuellement impacter leur comportement. Pour ce faire, il suffira de passer le nom de la fonction à manipuler (sans les « () » ) comme n'importe quel autre paramètre.
+However, this is what the decorators will allow us to do: via a function, manipulate other functions (both in input and output) and possibly impact their behavior. To do this, simply pass the name of the function to be handled (without the “()”) like any other parameter.
 
-Côté application, cela peut être fort utile pour avoir du code intelligent sachant s'adapter à divers environnements, générer des logs de l'exécution du code…
+On the application side, this can be very useful for having intelligent code that can adapt to various environments, generate code execution logs, etc.
 
-##### Présentation du concept :
+##### Presentation of the concept :
 
-Voici un exemple simplifié de décorateur. Dans le code ci-dessus, nous appelons notre fonction de décoration « mon_decorateur() » en lui passant en argument une fonction : ma_fonction(). Par rapport à la fonction seule (NDLR : ma_fonction), nous exécutons du code supplémentaire et par conséquent, modifions le comportement de la fonction. Nous sommes donc bien en présence d'un décorateur.
+<img src= "./img/dec.png"/>
 
-En réalité, nous ne modifions nullement le comportement du code de la fonction, puisque nous n'y touchons pas. C'est au niveau de l'appel de la fonction que tout se joue et ce sera le résultat final qui sera impacté.
+Here is a simplified example of a decorator. In the code below, we call our decoration function “decorator()” by passing it a function as argument: my_function(). Compared to the function alone (Editor's note: my_function), we execute additional code and therefore modify the behavior of the function. We are therefore in the presence of a decorator.
 
-Cependant cela a l'inconvénient que vous deviez appeler le décorateur et non pas la fonction à chaque fois que vous avez besoin de cette fonctionnalité supplémentaire.
+In fact, we are not changing the behavior of the function code in any way, since we are not touching it. It is at the level of the function call that everything is played and it will be the final result that will be impacted.
 
-Python permet de simplifier cette écriture via une syntaxe dédiée aux décorateurs, que l'on déclare avec le « @ ».
+However, this has the disadvantage that you have to call the decorator and not the function each time you need this extra functionality.
+
+Python makes it possible to simplify this writing via a syntax dedicated to decorators, which is declared with the "@".
 
 ```python
 1.
@@ -62,7 +64,7 @@ appelle de la fonction
 
 Dans ce cas, nous voyons que nous appelons notre fonction comme si elle n'était pas décorée. Python se charge, de façon transparente pour nous, de lui substituer sa version décorée
 
-Une question vous vient alors peut-être à l'esprit : et si on ne désire pas décorer notre fonction ? Eh bien il suffit de passer par une variable
+Une question vient alors peut-être à l'esprit : et si on ne désire pas décorer la fonction ? il suffit de passer par une variable
 
 Et voilà. Si a_decorer vaut True, alors notre décorateur jouera son rôle. Mais si a_decorer vaut False, alors nous récupérons notre fonction standard. Pour passer d'une version de débogage qui requiert le log des appels de fonction à une version de distribution, il vous suffira de changer cette valeur.
 
@@ -84,6 +86,8 @@ ma_fonction():
 ##### **Théorie:**
 
 Les décorateurs donne la possibilité de modification des fonctions définis pour étendre leurs fonctionnalités ou changer le comportement de celle-ci. Il imposent une loi sur une fonction définie sans modifier son contenu et dans sans modifier le contenu des bibliothèques sur lesquelles il sont utilisés.
+
+<img src = "./img/decorateur1.png"/>
 
 ```python
 Definition du décorateur
@@ -157,12 +161,12 @@ def user_admin(username):
                 print("you haven't the permission")
         return traitment
     return decorator
-    
+
 
 @user_admin("diakite")
 def connection():
     print("vous êtes connecté en tant que administrateur")
-    
+
 connection()
 ------------------------------------------------------
 vous êtes connecté en tant que administrateur
@@ -178,13 +182,9 @@ Une façon très populaire d'utiliser les décorateurs en Python est comme un en
 
 Les décorateurs Python intégrés comme `@classmethod`(méthode de classe), `@staticmethod`(méthode statique) et `@property`sont très populaires dans le modèle de décorateur POO de Python
 
-
-
 ##### Des cas d’utilisation concrets en rapport avec l’analyse de données
 
-[**DType-Decorate**]([Mini-Library for Data-Type Check and Conversion Decorators (morioh.com)
-
-The DType-Decorate is a module defines two different decorators at the current state. These decorators can be used to constrain the attributes of the decorated function to specific data types. This can help to keep functions clean especially when they are written for a specific context. This is usually the case for scientific applications, where functionality is often more important than clean code
+The [dtype_decorate](https://morioh.com/p/e84595a0001c) is a module defines two different decorators at the current state. These decorators can be used to constrain the attributes of the decorated function to specific data types. This can help to keep functions clean especially when they are written for a specific context. This is usually the case for scientific applications, where functionality is often more important than clean code
 
 ###### **Usage**
 
@@ -228,3 +228,13 @@ Très utilisés par les développeurs Python aguerris, les décorateurs permette
 J'espère que cette introduction aura su vous convaincre, et vous permettra à l'avenir d'être encore plus performant avec Python.
 
 enfin la liste des ressources consultées.
+
+###### Ressources consultées
+
+[decorators]([Les décorateurs python](https://python.doctor/page-decorateurs-decorator-python-cours-debutants)
+
+[callable](https://www.geeksforgeeks.org/callable-in-python/)
+
+[dtype_decorate](https://morioh.com/p/e84595a0001c)
+
+[Les décorateurs python](https://python.doctor/page-decorateurs-decorator-python-cours-debutants)
