@@ -83,7 +83,7 @@ ma_fonction():
 
 ##### **Théorie:**
 
-Les décorateurs donne la possibilité de modification des fonctions définis pour étendre leurs fonctionnalités ou changement le comportement de celle-ci. Il imposent une loi sur une fonction définie sans modifier son contenu et dans sans modifier le contenu des bibliothèques sur lesquelles il sont utilisés.
+Les décorateurs donne la possibilité de modification des fonctions définis pour étendre leurs fonctionnalités ou changer le comportement de celle-ci. Il imposent une loi sur une fonction définie sans modifier son contenu et dans sans modifier le contenu des bibliothèques sur lesquelles il sont utilisés.
 
 ```python
 Definition du décorateur
@@ -146,118 +146,85 @@ vous n'êtes pas connecté
 
 ###### Second exemple : decorators with parameters
 
-potentielles alternatives – 
+```python
+admin = "diakite"
+def user_admin(username):
+    def decorator(function):
+        def traitment():
+            if admin == username:
+                return function ()
+            else: 
+                print("you haven't the permission")
+        return traitment
+    return decorator
+    
 
-des cas d’utilisation concrets en rapport avec l’analyse de données – 
-
-une conclusion et 
-
-enfin la liste des ressources consultées
-
-## H2
-
-### H3
-
-### Bold
-
-**bold text**
-
-### Italic
-
-*italicized text*
-
-### Blockquote
-
-> blockquote
-
-### Ordered List
-
-1. First item
-2. Second item
-3. Third item
-
-### Unordered List
-
-- First item
-- Second item
-- Third item
-
-### Code
-
-`code`
-
-### Horizontal Rule
-
----
-
-### Link
-
-[Markdown Guide](https://www.markdownguide.org)
-
-### Image
-
-![alt text](https://www.markdownguide.org/assets/images/tux.png)
-
-## Extended Syntax
-
-These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
-
-### Table
-
-| Syntax    | Description |
-| --------- | ----------- |
-| Header    | Title       |
-| Paragraph | Text        |
-
-### Fenced Code Block
-
-```
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
-}
+@user_admin("diakite")
+def connection():
+    print("vous êtes connecté en tant que administrateur")
+    
+connection()
+------------------------------------------------------
+vous êtes connecté en tant que administrateur
 ```
 
-### Footnote
+Ces lignes demontrent que les decorateurs sont des [callable](https://www.geeksforgeeks.org/callable-in-python/)  qui prennent comme argument, la fonction à décorer et retourne un callable, les décorateurs ajoute une couche de logique à une fonction avec une syntaxe explicite @decorateur.
 
-Here's a sentence with a footnote. [^1]
+##### Potentielles alternatives
 
-[^1]: This is the footnote.
+Une façon très populaire d'utiliser les décorateurs en Python est comme un enregistreur de temps. Cela aide un programmeur à connaître le temps nécessaire à l'exécution d'une fonction pour mesurer l'efficacité.
 
-### Heading ID
+**La mémorisation** est une autre façon intéressante d'utiliser les décorateurs en Python. Les résultats des appels de fonction répétés sans aucun changement peuvent être facilement mémorisés lors de calculs ultérieurs. Vous pouvez simplement mémoriser une fonction avec des décorateurs.
 
-### My Great Heading {#custom-id}
+Les décorateurs Python intégrés comme `@classmethod`(méthode de classe), `@staticmethod`(méthode statique) et `@property`sont très populaires dans le modèle de décorateur POO de Python
 
-### Definition List
 
-term
-: definition
 
-### Strikethrough
+##### Des cas d’utilisation concrets en rapport avec l’analyse de données
 
-~~The world is flat.~~
+[**DType-Decorate**]([Mini-Library for Data-Type Check and Conversion Decorators (morioh.com)
 
-### Task List
+The DType-Decorate is a module defines two different decorators at the current state. These decorators can be used to constrain the attributes of the decorated function to specific data types. This can help to keep functions clean especially when they are written for a specific context. This is usually the case for scientific applications, where functionality is often more important than clean code
 
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
+###### **Usage**
 
-### Emoji
+There are two decorators so far: accept and enforce. accept will restrict the attribute data types to the the defined ones, while enforce will try to convert the given attribute to a desired data type. Both can also be used together, where accept does only make sense to be used after enforce.
 
-That is so funny! :joy:
+Define a function that does only accept an int and a float.
 
-(See also [Copying and Pasting Emoji](https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji))
+```python
+---------------pip install dtype-decorate-------------------
+import ddec
+@ddec.accept(a=int, b=float)
+def f(a, b):
+  pass
+```
 
-### Highlight
+```python
+@ddec.accept(a=(int, float))
+def f(a, be_any_type)
+  pass
 
-I need to highlight these ==very important words==.
+f(5, 'mystr')   # will run fine
+f('mystr', 5)   # will raise a TypeError
+```
 
-### Subscript
+```python
+@ddec.accept(a='None', b=('None', 'callable'))
+def f(a, b):
+  pass
 
-H~2~O
+f(None, None)           # will run fine
+f(None, lambda x: x)    # will run fine
+f(5, None)              # will raise a TypeError
+```
 
-### Superscript
+#### Conclusion
 
-X^2^
+Comme nous venons de le voir, les décorateurs font partie des concepts Python qui peuvent rapidement se révéler fort utiles.
+
+Très utilisés par les développeurs Python aguerris, les décorateurs permettent d'obtenir du code concis, limitant les répétitions au strict minimum, sans pour autant renoncer à une lisibilité importante.
+
+J'espère que cette introduction aura su vous convaincre, et vous permettra à l'avenir d'être encore plus performant avec Python.
+
+enfin la liste des ressources consultées.
