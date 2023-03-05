@@ -170,11 +170,20 @@ def connection():
 connection()
 ------------------------------------------------------
 vous êtes connecté en tant que administrateur
+------------------------------------------------------
+But we change the username in our fonction like this :
+
+ @user_admin("Nsukami")
+def connection():
+    print("vous êtes connecté en tant que administrateur")
+connection()
+------------------------------------------------------
+you haven't the permission
 ```
 
 These lines demonstrate that decorators are [callable](https://www.geeksforgeeks.org/callable-in-python/) which take as argument, the function to decorate and return a callable, decorators add a layer of logic to a function with an explicit @decorator syntax.
 
-##### Potential alternatives
+##### Potential alternatives :
 
 A very popular way to use decorators in Python is as a time recorder. This helps a programmer know the time it takes to execute a function to measure efficiency.
 
