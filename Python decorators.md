@@ -62,16 +62,16 @@ ma_fonction()
 appelle de la fonction
 ```
 
-Dans ce cas, nous voyons que nous appelons notre fonction comme si elle n'était pas décorée. Python se charge, de façon transparente pour nous, de lui substituer sa version décorée
+In this case, we see that we are calling our function as if it were undecorated. Python takes care, transparently for us, to substitute its decorated version
 
-Une question vient alors peut-être à l'esprit : et si on ne désire pas décorer la fonction ? il suffit de passer par une variable
+A question then perhaps comes to mind: what if we don't want to decorate the function? just pass through a variable
 
-Et voilà. Si a_decorer vaut True, alors notre décorateur jouera son rôle. Mais si a_decorer vaut False, alors nous récupérons notre fonction standard. Pour passer d'une version de débogage qui requiert le log des appels de fonction à une version de distribution, il vous suffira de changer cette valeur.
+And There you go. If a_decorer is True, then our decorator will play its part. But if a_decorer is False, then we get our standard function back. To switch from a debug version that requires the function call log to a distribution version, you just need to change this value.
 
-C'est sur cela que repose le fonctionnement de base d'un décorateur
+This is what the basic operation of a decorator is based on.
 
 ```python
-enchainement des décorateurs : Syntaxe
+series of decorators : Syntax
 
 mon_decorateur01(mon_decorateur02(ma_fonction))
 
@@ -83,14 +83,14 @@ ma_fonction():
 ...
 ```
 
-##### **Théorie:**
+##### **Theory:**
 
-Les décorateurs donne la possibilité de modification des fonctions définis pour étendre leurs fonctionnalités ou changer le comportement de celle-ci. Il imposent une loi sur une fonction définie sans modifier son contenu et dans sans modifier le contenu des bibliothèques sur lesquelles il sont utilisés.
+The decorators give the possibility of modification of the functions defined to extend their functionalities or to change the behavior of this one. They impose a law on a defined function without modifying its content and without modifying the content of the libraries on which they are used.
 
 <img src = "./img/decorateur1.png"/>
 
 ```python
-Definition du décorateur
+Definition of decorator
 language = True
 def decorator(func):
     if language:
@@ -104,9 +104,9 @@ def hello():
 Bonjour le monde
 ```
 
-##### Exemple pratique :
+##### Pratical example :
 
-Prénons le cas qui est tel que, l'utilisateur pour modifier une ligne dans une base de données doit se connecté pour le faire il faut avoir une autorisation à cet effet.
+Let's take the case which is such that the user to modify a line in a database must be connected to do so, he must have authorization for this purpose.
 
 ---
 
@@ -172,17 +172,17 @@ connection()
 vous êtes connecté en tant que administrateur
 ```
 
-Ces lignes demontrent que les decorateurs sont des [callable](https://www.geeksforgeeks.org/callable-in-python/)  qui prennent comme argument, la fonction à décorer et retourne un callable, les décorateurs ajoute une couche de logique à une fonction avec une syntaxe explicite @decorateur.
+These lines demonstrate that decorators are [callable](https://www.geeksforgeeks.org/callable-in-python/) which take as argument, the function to decorate and return a callable, decorators add a layer of logic to a function with an explicit @decorator syntax.
 
-##### Potentielles alternatives
+##### Potential alternatives
 
-Une façon très populaire d'utiliser les décorateurs en Python est comme un enregistreur de temps. Cela aide un programmeur à connaître le temps nécessaire à l'exécution d'une fonction pour mesurer l'efficacité.
+A very popular way to use decorators in Python is as a time recorder. This helps a programmer know the time it takes to execute a function to measure efficiency.
 
-**La mémorisation** est une autre façon intéressante d'utiliser les décorateurs en Python. Les résultats des appels de fonction répétés sans aucun changement peuvent être facilement mémorisés lors de calculs ultérieurs. Vous pouvez simplement mémoriser une fonction avec des décorateurs.
+**Remembering** is another cool way to use decorators in Python. The results of repeated function calls without any changes can be easily remembered for later calculations. You can simply memorize a function with decorators.
 
-Les décorateurs Python intégrés comme `@classmethod`(méthode de classe), `@staticmethod`(méthode statique) et `@property`sont très populaires dans le modèle de décorateur POO de Python
+Built-in Python decorators like `@classmethod`(class method), `@staticmethod`(static method) and `@property` are very popular in Python's OOP decorator pattern
 
-##### Des cas d’utilisation concrets en rapport avec l’analyse de données
+##### Concrete use cases related to data analysis :
 
 The [dtype_decorate](https://morioh.com/p/e84595a0001c) is a module defines two different decorators at the current state. These decorators can be used to constrain the attributes of the decorated function to specific data types. This can help to keep functions clean especially when they are written for a specific context. This is usually the case for scientific applications, where functionality is often more important than clean code
 
@@ -219,17 +219,17 @@ f(None, lambda x: x)    # will run fine
 f(5, None)              # will raise a TypeError
 ```
 
-#### Conclusion
+##### Conclusion :
 
-Comme nous venons de le voir, les décorateurs font partie des concepts Python qui peuvent rapidement se révéler fort utiles.
+As we have just seen, decorators are among the Python concepts that can quickly turn out to be very useful.
 
-Très utilisés par les développeurs Python aguerris, les décorateurs permettent d'obtenir du code concis, limitant les répétitions au strict minimum, sans pour autant renoncer à une lisibilité importante.
+Widely used by seasoned Python developers, decorators make it possible to obtain concise code, limiting repetitions to the strict minimum, without sacrificing significant readability.
 
-J'espère que cette introduction aura su vous convaincre, et vous permettra à l'avenir d'être encore plus performant avec Python.
+I hope that this introduction will have convinced you, and will allow you in the future to be even more efficient with Python.
 
-enfin la liste des ressources consultées.
+finally the list of consulted resources.
 
-###### Ressources consultées
+##### Resources consulted :
 
 [decorators]([Les décorateurs python](https://python.doctor/page-decorateurs-decorator-python-cours-debutants)
 
