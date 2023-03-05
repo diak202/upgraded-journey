@@ -110,7 +110,7 @@ Let's take the case which is such that the user to modify a line in a database m
 
 ---
 
-###### Firs exemple:
+###### First exemple:
 
 ```python
 user_status = True
