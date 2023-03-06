@@ -183,7 +183,7 @@ you haven't the permission
 
 These lines demonstrate that decorators are [callable](https://www.geeksforgeeks.org/callable-in-python/) which take as argument, the function to decorate and return a callable, decorators add a layer of logic to a function with an explicit @decorator syntax.
 
-##### Potential alternatives :
+##### **Potential alternatives** :
 
 A very popular way to use decorators in Python is as a time recorder. This helps a programmer know the time it takes to execute a function to measure efficiency.
 
@@ -191,7 +191,7 @@ A very popular way to use decorators in Python is as a time recorder. This helps
 
 Built-in Python decorators like `@classmethod`(class method), `@staticmethod`(static method) and `@property` are very popular in Python's OOP decorator pattern
 
-##### Concrete use cases related to data analysis :
+##### **Concrete use cases related to data analysis** :
 
 The [dtype_decorate](https://morioh.com/p/e84595a0001c) is a module defines two different decorators at the current state. These decorators can be used to constrain the attributes of the decorated function to specific data types. This can help to keep functions clean especially when they are written for a specific context. This is usually the case for scientific applications, where functionality is often more important than clean code
 
